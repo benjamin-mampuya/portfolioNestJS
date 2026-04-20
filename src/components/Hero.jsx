@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faGithub, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { TypeAnimation } from 'react-type-animation';
+import profileImg from "../../public/portofolio.png";
 
 const Hero = () => {
     const socialLinks = [
@@ -115,11 +116,12 @@ const Hero = () => {
                             style={{ border: "2px solid red" }}>
                             {/* Note: Remplacer le src par l'image réelle dans le dossier public */}
                             <Image
-                                src="/portofolio.png"
+                                src={profileImg}
                                 alt="Ben Mampuya"
                                 fill
                                 style={{ objectFit: 'cover' }}
                                 priority
+                                placeholder='blur'
                             />
                         </div>
                     </motion.div>
