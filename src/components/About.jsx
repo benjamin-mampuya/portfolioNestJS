@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCode, faPalette, faUsers, faServer } from '@fortawesome/free-solid-svg-icons';
 
 const About = () => {
     const [activeTab, setActiveTab] = useState('education');
@@ -169,19 +171,54 @@ const About = () => {
                         transition={{ duration: 0.8 }}
                         className="w-full md:w-1/3"
                     >
-                        <div className="bg-card rounded-xl p-8 flex flex-col items-center text-center border border-borderDark h-full">
-                            <div className="w-32 h-32 relative rounded-full overflow-hidden border-2 border-primary mb-6 bg-borderLight flex items-center justify-center shrink-0">
-                                <Image src="/Ben.png" alt="Ben Mampuya" fill style={{ objectFit: 'cover' }} priority />
+                        <div className="group relative bg-gradient-to-b from-card to-card/50 rounded-2xl p-6 sm:p-8 flex flex-col items-center text-center border border-borderDark overflow-hidden h-full shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:border-primary/50">
+                            {/* Animated Background Blobs */}
+                            <div className="absolute top-0 right-0 -mr-8 -mt-8 w-32 h-32 rounded-full bg-primary/10 blur-3xl transition-transform duration-700 group-hover:scale-150"></div>
+                            <div className="absolute bottom-0 left-0 -ml-8 -mb-8 w-32 h-32 rounded-full bg-primary/10 blur-3xl transition-transform duration-700 group-hover:scale-150"></div>
+
+                            {/* Avatar */}
+                            <div className="relative mb-6 z-10 flex items-center justify-center">
+                                <div className="w-32 h-32 relative rounded-full overflow-hidden border-2 border-primary bg-card shrink-0 transition-transform duration-500 group-hover:scale-105">
+                                    <Image src="/Ben_cropped.png" alt="Ben Mampuya" fill style={{ objectFit: 'cover', objectPosition: 'top center' }} priority />
+                                </div>
                             </div>
-                            <h3 className="text-xl font-bold text-textMain mb-4 uppercase tracking-wider font-heading">Ben Mampuya</h3>
-                            <div className="w-full h-px bg-borderLight mb-4"></div>
-                            <p className="text-primary text-sm font-medium leading-relaxed">
-                                Front-End Developer<br />
-                                UI/UX Web Designer<br />
-                                Community Manager<br />
-                                IT Network & Systems<br />
-                                Administrator.
-                            </p>
+                            
+                            {/* Name */}
+                            <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-textMain to-primary mb-2 font-heading tracking-wide relative z-10 transition-transform duration-300 group-hover:scale-105">
+                                Ben Mampuya
+                            </h3>
+                            <div className="w-16 h-1 bg-gradient-to-r from-primary to-transparent rounded-full mb-8 relative z-10"></div>
+                            
+                            {/* Badges/Roles List */}
+                            <div className="flex flex-col gap-3 w-full relative z-10 mt-auto">
+                                <div className="flex items-center gap-4 bg-background/60 backdrop-blur-sm border border-borderLight rounded-xl p-3 transition-all duration-300 hover:-translate-y-1 hover:bg-primary/10 hover:border-primary/50 hover:shadow-md">
+                                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-card border border-borderDark text-primary shrink-0 shadow-sm group-hover/icon:scale-110 transition-transform">
+                                        <FontAwesomeIcon icon={faCode} className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-sm font-semibold text-textMain text-left flex-1">Front-End Developer</span>
+                                </div>
+                                
+                                <div className="flex items-center gap-4 bg-background/60 backdrop-blur-sm border border-borderLight rounded-xl p-3 transition-all duration-300 hover:-translate-y-1 hover:bg-primary/10 hover:border-primary/50 hover:shadow-md md:delay-75">
+                                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-card border border-borderDark text-primary shrink-0 shadow-sm">
+                                        <FontAwesomeIcon icon={faPalette} className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-sm font-semibold text-textMain text-left flex-1">UI/UX Web Designer</span>
+                                </div>
+                                
+                                <div className="flex items-center gap-4 bg-background/60 backdrop-blur-sm border border-borderLight rounded-xl p-3 transition-all duration-300 hover:-translate-y-1 hover:bg-primary/10 hover:border-primary/50 hover:shadow-md md:delay-100">
+                                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-card border border-borderDark text-primary shrink-0 shadow-sm">
+                                        <FontAwesomeIcon icon={faUsers} className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-sm font-semibold text-textMain text-left flex-1">Community Manager</span>
+                                </div>
+                                
+                                <div className="flex items-center gap-4 bg-background/60 backdrop-blur-sm border border-borderLight rounded-xl p-3 transition-all duration-300 hover:-translate-y-1 hover:bg-primary/10 hover:border-primary/50 hover:shadow-md md:delay-150">
+                                    <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-card border border-borderDark text-primary shrink-0 shadow-sm">
+                                        <FontAwesomeIcon icon={faServer} className="w-5 h-5" />
+                                    </div>
+                                    <span className="text-xs sm:text-sm font-semibold text-textMain text-left leading-tight flex-1">IT Network & Systems<br/><span className="text-textMuted font-normal text-xs">Administrator</span></span>
+                                </div>
+                            </div>
                         </div>
                     </motion.div>
 

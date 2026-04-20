@@ -24,7 +24,7 @@ const Hero = () => {
                 <div className="absolute top-[30%] right-[-10%] w-[40%] h-[60%] bg-cyan-400/20 blur-[150px] rounded-full"></div>
                 <div className="absolute bottom-[-10%] left-[20%] w-[60%] h-[50%] bg-purple-600/15 blur-[150px] rounded-full"></div>
             </div>
-            
+
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10">
                 <div className="flex flex-col-reverse md:flex-row items-center justify-between gap-12">
 
@@ -36,20 +36,20 @@ const Hero = () => {
                         className="flex-1 text-left"
                     >
                         <h1 className="text-xl md:text-2xl lg:text-4xl font-bold mb-6 uppercase tracking-[0.2em] md:tracking-[0.3em] font-heading">
-                                <span className="relative inline-block pb-2 mr-3 md:mr-4">
-                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300 drop-shadow-sm">Ben</span>
-                                    {/* Animated Underline */}
-                                    <span className="absolute left-0 bottom-0 w-full h-[2px] overflow-hidden bg-primary/20">
-                                        <motion.span 
-                                            className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-transparent via-primary to-transparent"
-                                            initial={{ x: '-100%' }}
-                                            animate={{ x: '100%' }}
-                                            transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
-                                        />
-                                    </span>
+                            <span className="relative inline-block pb-2 mr-3 md:mr-4">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300 drop-shadow-sm">Ben</span>
+                                {/* Animated Underline */}
+                                <span className="absolute left-0 bottom-0 w-full h-[2px] overflow-hidden bg-primary/20">
+                                    <motion.span
+                                        className="absolute top-0 left-0 h-full w-full bg-gradient-to-r from-transparent via-primary to-transparent"
+                                        initial={{ x: '-100%' }}
+                                        animate={{ x: '100%' }}
+                                        transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
+                                    />
                                 </span>
-                                <span className="text-textMain drop-shadow-sm">Mampuya</span>
-                            </h1>
+                            </span>
+                            <span className="text-textMain drop-shadow-sm">Mampuya</span>
+                        </h1>
                         <h2 className="text-sm md:text-base lg:text-lg text-primary font-medium mb-6 leading-relaxed max-w-2xl font-heading">
                             <TypeAnimation
                                 sequence={[

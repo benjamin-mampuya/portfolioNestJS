@@ -1,0 +1,10 @@
+﻿public/Ben.png
+public/moderne.png
+public/netlify.toml
+public/portofolio.png
+public/project1.avif
+public/project2.png
+public/project3.png
+public/projet4.png
+public/projet5.png
+public/projet6.png
