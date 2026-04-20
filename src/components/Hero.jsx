@@ -113,8 +113,7 @@ const Hero = () => {
                     >
                         <div
                             className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-borderDark"
-                            style={{ border: "2px solid red" }}>
-                            {/* Note: Remplacer le src par l'image réelle dans le dossier public */}
+                        >
                             <Image
                                 src={profileImg}
                                 alt="Ben Mampuya"
