@@ -18,7 +18,7 @@ const About = () => {
 
     const tabContents = {
         education: (
-            <div className="text-textMuted space-y-6 animate-fadeIn">
+            <div className="text-textMuted space-y-6 animate-fadeIn h-full overflow-y-auto pr-2" style={{ maxHeight: '400px' }}>
                 <div className="space-y-4">
                     <div className="flex flex-col">
                         <h4 className="text-lg font-bold text-textMain font-heading">Licence en Systèmes Informatiques, Réseaux et Télécommunications (LSI)</h4>
@@ -27,6 +27,14 @@ const About = () => {
                     <div className="flex flex-col">
                         <h4 className="text-lg font-bold text-textMain font-heading">Diplôme d’État en Secrétariat Informatique</h4>
                         <span className="text-primary text-sm mb-2">Institut Saint Marc, Goma (2009-2015)</span>
+                    </div>
+                    <div className="flex flex-col">
+                        <h4 className="text-lg font-bold text-textMain font-heading">Formation en Suivi et Évaluation de projets</h4>
+                        <span className="text-primary text-sm mb-2">Organisée par Bensizwe RDC (16 au 27 avril 2022)</span>
+                    </div>
+                    <div className="flex flex-col">
+                        <h4 className="text-lg font-bold text-textMain font-heading">Coding Bootcamp en Développement Full-Stack</h4>
+                        <span className="text-primary text-sm mb-2">Programme Talent 4 Startups, financé par Digital Africa chez Afrix Global, Goma (2025 - 2026)</span>
                     </div>
                 </div>
             </div>
@@ -251,7 +259,7 @@ const About = () => {
                             ))}
                         </div>
 
-                        <div className="bg-card/50 p-6 md:p-8 rounded-xl border border-borderDark/50 min-h-[400px]">
+                        <div className="bg-card/50 p-6 md:p-8 rounded-xl border border-borderDark/50 min-h-[400px] flex-1">
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={activeTab}
