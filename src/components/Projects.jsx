@@ -7,11 +7,11 @@ import { motion } from 'framer-motion';
 const Projects = () => {
     const projects = [
         { title: 'Web Design', category: 'Portfolio', image: '/project1.avif' },
-        { title: 'App Development', category: 'Mobile App', image: '/project2.png' },
+        { title: 'App Development', category: 'Mobile App', image: '/Projet 2.jpg' },
         { title: 'UI/UX Design', category: 'Design System', image: '/project3.png' },
         { title: 'E-commerce', category: 'Web App', image: '/projet4.png' },
         { title: 'Dashboard', category: 'Analytics', image: '/projet5.png' },
-        { title: 'Landing Page', category: 'Marketing', image: '/projet6.png' },
+        { title: 'Landing Page', category: 'Marketing', image: '/Projet 6.jpg' },
     ];
 
     const containerVariants = {
@@ -60,16 +60,16 @@ const Projects = () => {
                         <motion.div
                             key={index}
                             variants={projectVariants}
-                            className="group relative overflow-hidden rounded-xl bg-card border border-borderDark h-72 sm:h-80 flex-shrink-0 cursor-pointer"
+                            className="group relative overflow-hidden rounded-xl bg-card border border-borderDark h-80 sm:h-[22rem] flex-shrink-0 cursor-pointer"
                             whileHover={{ y: -10 }}
                         >
                             {/* Project Image */}
-                            <div className="absolute inset-0 p-4 sm:p-6">
+                            <div className="absolute inset-1 sm:inset-1.5 rounded-lg overflow-hidden bg-background/30">
                                 <Image
                                     src={project.image}
                                     alt={project.title}
                                     fill
-                                    className="object-contain drop-shadow-lg group-hover:scale-105 transition-transform duration-500"
+                                    className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
                                     priority={false}
                                 />
                             </div>
