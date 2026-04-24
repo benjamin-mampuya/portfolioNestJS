@@ -97,7 +97,7 @@ const Hero = () => {
                                 Contact-moi
                             </Link>
                             <a
-                                href="/CV PROFESSIONNEL BENJAMIN MAMPUYA.pdf"
+                                href="/CV  BENJAMIN PULUKUTU MAMPUYA.pdf"
                                 download
                                 className="w-full sm:w-[220px] flex items-center justify-center border-2 border-primary text-primary hover:bg-primary hover:text-gray-900 font-semibold py-3 px-6 rounded-full transition-all duration-300 text-sm tracking-wider transform hover:-translate-y-1"
                             >
