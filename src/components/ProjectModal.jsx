@@ -73,7 +73,7 @@ const ProjectModal = ({ project, isOpen, onClose }) => {
 
                                 <div>
                                     <h3 className="text-xl font-semibold text-textMain mb-3 flex items-center">
-                                        <span className="text-primary mr-2">03.</span> L'Impact
+                                        <span className="text-primary mr-2">03.</span> L&apos;Impact
                                     </h3>
                                     <div className="bg-background rounded-xl p-6 border border-borderDark">
                                         <p className="text-textMuted leading-relaxed">

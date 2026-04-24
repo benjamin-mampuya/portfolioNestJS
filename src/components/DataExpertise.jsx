@@ -73,7 +73,7 @@ const DataExpertise = () => {
                                 Front-End & UI/UX
                             </h3>
                             <p className="text-textMuted">
-                                Création d'interfaces utilisateur performantes et esthétiques avec React, Next.js et Framer Motion. Focus sur l'expérience utilisateur et l'accessibilité.
+                                Création d&apos;interfaces utilisateur performantes et esthétiques avec React, Next.js et Framer Motion. Focus sur l&apos;expérience utilisateur et l&apos;accessibilité.
                             </p>
                         </div>
 
@@ -83,7 +83,7 @@ const DataExpertise = () => {
                                 Analyse & Data
                             </h3>
                             <p className="text-textMuted">
-                                Intégration d'outils analytiques, optimisation des performances (Web Vitals) et création de tableaux de bord interactifs pour le suivi des KPI.
+                                Intégration d&apos;outils analytiques, optimisation des performances (Web Vitals) et création de tableaux de bord interactifs pour le suivi des KPI.
                             </p>
                         </div>
                         
@@ -93,7 +93,7 @@ const DataExpertise = () => {
                                 Architecture & Backend
                             </h3>
                             <p className="text-textMuted">
-                                Conception d'architectures robustes, intégration d'API RESTful/GraphQL et gestion de l'état global des applications.
+                                Conception d&apos;architectures robustes, intégration d&apos;API RESTful/GraphQL et gestion de l&apos;état global des applications.
                             </p>
                         </div>
                     </motion.div>

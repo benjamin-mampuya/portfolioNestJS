@@ -39,10 +39,10 @@ const Testimonials = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-textMain font-heading">
-                        Ce qu'ils <span className="text-primary">disent</span>
+                        Ce qu&apos;ils <span className="text-primary">disent</span>
                     </h2>
                     <p className="mt-4 text-textMuted max-w-2xl mx-auto">
-                        Retours d'expérience de mes collaborateurs et clients.
+                        Retours d&apos;expérience de mes collaborateurs et clients.
                     </p>
                 </motion.div>
 
@@ -56,10 +56,10 @@ const Testimonials = () => {
                             viewport={{ once: true }}
                             className="bg-card p-8 rounded-2xl border border-borderDark flex flex-col relative hover:-translate-y-2 transition-transform duration-300"
                         >
-                            <div className="absolute top-6 right-6 text-primary/20 text-6xl font-serif leading-none">"</div>
+                            <div className="absolute top-6 right-6 text-primary/20 text-6xl font-serif leading-none">&quot;</div>
                             
                             <p className="text-textMuted mb-8 relative z-10 italic">
-                                "{testimonial.text}"
+                                &quot;{testimonial.text}&quot;
                             </p>
                             
                             <div className="mt-auto flex items-center pt-4 border-t border-borderDark/50">
