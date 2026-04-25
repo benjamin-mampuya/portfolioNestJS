@@ -5,7 +5,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { ThemeProvider } from '@/components/ThemeProvider';
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 
 config.autoAddCss = false;
 
@@ -56,6 +56,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${inter.variable} ${outfit.variable} scroll-smooth overflow-x-hidden`}>
+      <GoogleTagManager gtmId="GTM-KQGQ5W2K" />
       <body className="antialiased min-h-screen bg-background text-textMain transition-colors duration-300 overflow-x-hidden">
         <AppRouterCacheProvider>
           <ThemeProvider>
