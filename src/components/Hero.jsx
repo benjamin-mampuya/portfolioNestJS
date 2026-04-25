@@ -51,26 +51,31 @@ const Hero = () => {
                             </span>
                             <span className="text-textMain drop-shadow-sm">Mampuya</span>
                         </h1>
-                        <h2 className="text-sm md:text-base lg:text-lg text-primary font-medium mb-6 leading-relaxed max-w-2xl font-heading">
-                            <TypeAnimation
-                                sequence={[
-                                    'Front-End Developer | UI/UX Web Designer | MEAL Officer | Data Analyst | Community Manager | IT Network & Systems Administrator.',
-                                ]}
-                                wrapper="span"
-                                cursor={false}
-                                repeat={0}
-                                speed={50}
-                            />
-                        </h2>
-                        <p className="text-textMuted text-sm md:text-base mb-8 max-w-xl leading-relaxed">
-
-                            Professionnel polyvalent à l’intersection du digital, de la donnée et de
-                            l’impact terrain, je conçois des solutions web intuitives, analyse les données
-                            pour éclairer la prise de décision, et renforce la visibilité des organisations
-                            grâce à des stratégies digitales efficaces. Mon approche allie créativité, rigueur
-                            analytique et compréhension des besoins utilisateurs pour produire des résultats
-                            concrets et mesurables.
-                        </p>
+                        <div className="mb-6 max-w-2xl min-h-[4rem] sm:min-h-[3rem]">
+                            <h2 className="text-sm md:text-base lg:text-lg text-primary font-semibold leading-relaxed font-heading">
+                                <TypeAnimation
+                                    sequence={[
+                                        'Front-End Developer | UI/UX Web Designer | MEAL Officer | Data Analyst | Community Manager | IT Network & Systems Admin',
+                                    ]}
+                                    wrapper="span"
+                                    cursor={true}
+                                    repeat={0}
+                                    speed={50}
+                                />
+                            </h2>
+                        </div>
+                        <div className="text-textMuted text-sm md:text-base mb-8 max-w-xl leading-relaxed space-y-4">
+                            <p className="text-justify">
+                                Professionnel polyvalent à l’intersection du digital, de la donnée et de
+                                l’impact terrain, je conçois des solutions web intuitives, analyse les données
+                                pour éclairer la prise de décision, et renforce la visibilité des organisations
+                                grâce à des stratégies digitales efficaces.
+                            </p>
+                            <p className="text-justify border-l-2 border-primary/50 pl-4 py-1 italic bg-primary/5 rounded-r-lg">
+                                Mon approche allie créativité, rigueur analytique et compréhension des
+                                besoins utilisateurs pour produire des résultats concrets et mesurables.
+                            </p>
+                        </div>
 
                         {/* Social Icons */}
                         <div className="flex items-center space-x-4 mb-10">
