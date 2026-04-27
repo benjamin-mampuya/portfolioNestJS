@@ -62,7 +62,7 @@ const Hero = () => {
                         transition={{ duration: 0.8 }}
                         className="flex-1 text-left"
                     >
-                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 font-script">
+                        <h1 className="text-xl md:text-2xl lg:text-4xl font-bold mb-6 uppercase tracking-[0.2em] md:tracking-[0.3em] font-heading">
                             <span className="relative inline-block pb-2 mr-3 md:mr-4">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300 drop-shadow-sm">Ben</span>
                                 {/* Animated Underline */}
