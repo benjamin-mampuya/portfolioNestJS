@@ -4,6 +4,6 @@ export default function robots() {
       userAgent: '*',
       allow: '/',
     },
-    sitemap: 'https://benmampuya.netlify.app/sitemap.xml',
+    sitemap: 'https://benmampuya.vercel.app/sitemap.xml',
   }
 }
