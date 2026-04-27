@@ -87,7 +87,7 @@ export default function ProjectPage({ params }) {
                                     <div className="w-12 h-[2px] bg-primary"></div>
                                     <h2 className="text-3xl font-bold font-heading text-textMain">Le Défi</h2>
                                 </div>
-                                <p className="text-textMuted leading-relaxed text-lg lg:text-xl font-light">
+                                <p className="text-textMuted leading-relaxed text-lg lg:text-xl font-light text-justify">
                                     {project.problem}
                                 </p>
                             </motion.section>
@@ -97,7 +97,7 @@ export default function ProjectPage({ params }) {
                                     <div className="w-12 h-[2px] bg-primary"></div>
                                     <h2 className="text-3xl font-bold font-heading text-textMain">La Solution</h2>
                                 </div>
-                                <p className="text-textMuted leading-relaxed text-lg lg:text-xl font-light">
+                                <p className="text-textMuted leading-relaxed text-lg lg:text-xl font-light text-justify">
                                     {project.solution}
                                 </p>
                             </motion.section>
@@ -109,7 +109,7 @@ export default function ProjectPage({ params }) {
                                 </div>
                                 <div className="p-8 rounded-2xl bg-primary/5 border border-primary/10 relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl rounded-full"></div>
-                                    <p className="text-textMain leading-relaxed text-lg font-medium relative z-10">
+                                    <p className="text-textMain leading-relaxed text-lg font-medium relative z-10 text-justify">
                                         {project.impact}
                                     </p>
                                 </div>
