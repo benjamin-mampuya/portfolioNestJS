@@ -58,6 +58,21 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fr" className={`${inter.variable} ${outfit.variable} scroll-smooth overflow-x-hidden`}>
+      <head>
+        {/* Google tag (gtag.js) */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFRJ8KG6R0"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', 'G-RFRJ8KG6R0');
+            `,
+          }}
+        />
+      </head>
       <GoogleTagManager gtmId="GTM-KQGQ5W2K" />
       <body className="antialiased min-h-screen bg-background text-textMain transition-colors duration-300 overflow-x-hidden">
         <CustomCursor />
@@ -68,7 +83,6 @@ export default function RootLayout({ children }) {
           </ThemeProvider>
         </AppRouterCacheProvider>
       </body>
-      <GoogleAnalytics gaId="G-RFRJ8KG6R0" />
     </html>
   );
 }
