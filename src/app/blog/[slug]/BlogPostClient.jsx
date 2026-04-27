@@ -131,10 +131,10 @@ export default function BlogPostClient({ post }) {
                         transition={{ duration: 0.8 }}
                     >
                         <div className="text-textMuted font-medium">
-                            Merci d'avoir lu cet article !
+                            Merci d&apos;avoir lu cet article !
                         </div>
                         <Link href="/blog" className="px-6 py-3 bg-card border border-borderDark rounded-full hover:border-primary/50 hover:bg-primary/5 transition-all text-sm font-bold text-textMain cursor-pointer">
-                            Voir plus d'articles
+                            Voir plus d&apos;articles
                         </Link>
                     </motion.div>
                 </article>
