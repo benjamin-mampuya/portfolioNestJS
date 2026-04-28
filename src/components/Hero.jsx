@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLinkedinIn, faGithub, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { TypeAnimation } from 'react-type-animation';
 import profileImg from "../../public/portofolio.png";
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
 
 const Hero = () => {
     const x = useMotionValue(0);
@@ -18,6 +20,9 @@ const Hero = () => {
 
     const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["15deg", "-15deg"]);
     const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-15deg", "15deg"]);
+
+    const { language } = useLanguage();
+    const t = translations[language].hero;
 
     const handleMouseMove = (e) => {
         const rect = e.currentTarget.getBoundingClientRect();
@@ -64,7 +69,7 @@ const Hero = () => {
                     >
                         <h1 className="text-xl md:text-2xl lg:text-4xl font-bold mb-6 uppercase tracking-[0.2em] md:tracking-[0.3em] font-heading">
                             <span className="relative inline-block pb-2 mr-3 md:mr-4">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300 drop-shadow-sm">Ben</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-cyan-300 drop-shadow-sm">{t.hi}</span>
                                 {/* Animated Underline */}
                                 <span className="absolute left-0 bottom-0 w-full h-[2px] overflow-hidden bg-primary/20">
                                     <motion.span
@@ -75,13 +80,14 @@ const Hero = () => {
                                     />
                                 </span>
                             </span>
-                            <span className="text-textMain drop-shadow-sm">Mampuya</span>
+                            <span className="text-textMain drop-shadow-sm">{t.lastName}</span>
                         </h1>
                         <div className="mb-6 max-w-2xl min-h-[4rem] sm:min-h-[3rem]">
                             <h2 className="text-sm md:text-base lg:text-lg text-primary font-semibold leading-relaxed font-heading">
                                 <TypeAnimation
+                                    key={language}
                                     sequence={[
-                                        'Front-End Developer | UI/UX Web Designer | MEAL Officer | Data Analyst | Community Manager | IT Network & Systems Admin',
+                                        t.roles,
                                     ]}
                                     wrapper="span"
                                     cursor={true}
@@ -92,14 +98,10 @@ const Hero = () => {
                         </div>
                         <div className="text-textMuted text-sm md:text-base mb-8 max-w-xl leading-relaxed space-y-4">
                             <p className="text-justify">
-                                Professionnel polyvalent à l’intersection du digital, de la donnée et de
-                                l’impact terrain, je conçois des solutions web intuitives, analyse les données
-                                pour éclairer la prise de décision, et renforce la visibilité des organisations
-                                grâce à des stratégies digitales efficaces.
+                                {t.description1}
                             </p>
                             <p className="text-justify border-l-2 border-primary/50 pl-4 py-1 italic bg-primary/5 rounded-r-lg">
-                                Mon approche allie créativité, rigueur analytique et compréhension des
-                                besoins utilisateurs pour produire des résultats concrets et mesurables.
+                                {t.description2}
                             </p>
                         </div>
 
@@ -125,14 +127,14 @@ const Hero = () => {
                                 href="#contact"
                                 className="w-full sm:w-[220px] flex items-center justify-center bg-primary border-2 border-primary hover:bg-cyan-400 hover:border-cyan-400 text-gray-900 font-semibold py-3 px-6 rounded-full transition-all duration-300 transform hover:-translate-y-1 text-sm tracking-wider"
                             >
-                                Contact-moi
+                                {t.ctaContact}
                             </Link>
                             <a
                                 href="/cv-benjamin-mampuya.pdf"
                                 download
                                 className="w-full sm:w-[220px] flex items-center justify-center border-2 border-primary text-primary hover:bg-primary hover:text-gray-900 font-semibold py-3 px-6 rounded-full transition-all duration-300 text-sm tracking-wider transform hover:-translate-y-1"
                             >
-                                Télécharger mon CV
+                                {t.ctaCV}
                             </a>
                         </div>
                     </motion.div>

@@ -3,39 +3,44 @@
 import React, { useRef, useEffect } from 'react';
 import Image from 'next/image';
 import { motion, useInView } from 'framer-motion';
-
-const testimonials = [
-    {
-        name: "Hyacinthe MANDELA",
-        role: "Chef de Projet Digital",
-        company: "TechCorp",
-        text: "Ben a complètement transformé notre interface utilisateur. Son attention aux détails et son expertise sur Next.js ont permis de doubler nos conversions sur mobile.",
-        image: "/hyacinthe-mandela.jpg"
-    },
-    {
-        name: "Jean Pierre SAIDI",
-        role: "Expert en qualification professionnelle",
-        company: "RESICO/GIZ-RDC",
-        text: "Un vrai plaisir de travailler avec Ben. Son code est propre, bien structuré et les animations qu'il a intégrées apportent une vraie valeur ajoutée au produit.",
-        image: "/jean-pierre-saidi.jpg"
-    },
-    {
-        name: "Noella BULONZA",
-        role: "Directrice Marketing",
-        company: "E-com Solutions",
-        text: "La refonte de notre plateforme a été un succès total. Ben a su comprendre nos enjeux business et les traduire en une expérience utilisateur fluide et moderne.",
-        image: "/nella-bulonza.png"
-    },
-    {
-        name: "Prud ZIHALIRWA",
-        role: "CIO",
-        company: "Afrix Global",
-        text: "Une collaboration exceptionnelle. Ben ne fait pas que coder, il apporte une véritable vision produit qui fait la différence sur le marché actuel.",
-        image: "/prud-zihalirwa.jpeg"
-    }
-];
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
 
 const Testimonials = () => {
+    const { language } = useLanguage();
+    const t = translations[language].testimonials;
+
+    const testimonials = [
+        {
+            name: t.list[0].name,
+            role: t.list[0].role,
+            company: t.list[0].company,
+            text: t.list[0].text,
+            image: "/hyacinthe-mandela.jpg"
+        },
+        {
+            name: t.list[1].name,
+            role: t.list[1].role,
+            company: t.list[1].company,
+            text: t.list[1].text,
+            image: "/jean-pierre-saidi.jpg"
+        },
+        {
+            name: t.list[2].name,
+            role: t.list[2].role,
+            company: t.list[2].company,
+            text: t.list[2].text,
+            image: "/nella-bulonza.png"
+        },
+        {
+            name: t.list[3].name,
+            role: t.list[3].role,
+            company: t.list[3].company,
+            text: t.list[3].text,
+            image: "/prud-zihalirwa.jpeg"
+        }
+    ];
+
     const containerRef = useRef(null);
     const isInView = useInView(containerRef, { once: true, margin: "-50px" });
 
@@ -73,10 +78,10 @@ const Testimonials = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-textMain font-heading">
-                        Ce qu&apos;ils <span className="text-primary">disent de mes oeuvres</span>
+                        {t.title} <span className="text-primary">{t.titleHighlight}</span>
                     </h2>
                     <p className="mt-4 text-textMuted max-w-2xl mx-auto">
-                        Retours d&apos;expérience de mes collaborateurs et clients. Faites glisser pour en voir plus.
+                        {t.subtitle}
                     </p>
                 </motion.div>
 

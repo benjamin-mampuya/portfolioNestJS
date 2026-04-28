@@ -4,36 +4,41 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faDesktop, faChartBar, faNetworkWired, faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
 const Services = () => {
+    const { language } = useLanguage();
+    const t = translations[language].services;
+
     const services = [
         {
-            title: 'Développement Front-End',
-            description: 'Création d\'interfaces web modernes et responsives avec React, HTML5, CSS3 et JavaScript. Développement d\'applications web interactives et optimisées pour une expérience utilisateur exceptionnelle.',
+            title: t.list[0].title,
+            description: t.list[0].description,
             icon: faCode,
         },
         {
-            title: 'UI/UX Design',
-            description: 'Conception d\'interfaces utilisateur ergonomiques et intuitives. Création de maquettes et prototypes avec Figma, en mettant l\'accent sur l\'expérience utilisateur et l\'accessibilité.',
+            title: t.list[1].title,
+            description: t.list[1].description,
             icon: faDesktop,
         },
         {
-            title: 'Analyse de Données',
-            description: 'Traitement et analyse de données avec Excel avancé et Power BI. Création de tableaux de bord interactifs, reporting et visualisation de données pour prendre des décisions éclairées.',
+            title: t.list[2].title,
+            description: t.list[2].description,
             icon: faChartBar,
         },
         {
-            title: 'Administration Réseaux & Systèmes',
-            description: 'Configuration et gestion d\'infrastructures réseau LAN/WAN. Administration de systèmes informatiques, maintenance et optimisation des performances réseau avec des technologies Cisco et Mikrotik.',
+            title: t.list[3].title,
+            description: t.list[3].description,
             icon: faNetworkWired,
         },
         {
-            title: 'Suivi et Évaluation MEAL',
-            description: 'Suivi et évaluation des projets de développement. Collecte, analyse et reporting des données d\'impact. Collaboration avec les équipes terrain pour améliorer la qualité des interventions et mesurer les résultats.',
+            title: t.list[4].title,
+            description: t.list[4].description,
             icon: faClipboardCheck,
         },
     ];
@@ -69,7 +74,7 @@ const Services = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-textMain font-heading">
-                        Mes <span className="text-primary">Services</span>
+                        {t.title} <span className="text-primary">{t.titleHighlight}</span>
                     </h2>
                 </motion.div>
 
@@ -123,7 +128,7 @@ const Services = () => {
                                         whileHover={{ scale: 1.02 }}
                                         whileTap={{ scale: 0.98 }}
                                     >
-                                        En savoir plus
+                                        {t.learnMore}
                                         <svg className="w-4 h-4 transform group-hover/btn:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                                     </motion.button>
                                 </motion.div>

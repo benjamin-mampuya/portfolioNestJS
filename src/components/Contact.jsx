@@ -2,8 +2,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
 
 const Contact = () => {
+    const { language } = useLanguage();
+    const t = translations[language].contact;
+
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -47,7 +52,7 @@ const Contact = () => {
                 throw new Error(result.message || "Erreur lors de l'envoi");
             }
 
-            setStatus({ type: 'success', message: 'Email envoyé avec succès! Je vous répondrai bientôt.' });
+            setStatus({ type: 'success', message: t.success });
             setFormData({
                 firstName: '',
                 lastName: '',
@@ -56,7 +61,7 @@ const Contact = () => {
                 message: ''
             });
         } catch (error) {
-            setStatus({ type: 'error', message: 'Erreur lors de l\'envoi de l\'email. Veuillez réessayer.' });
+            setStatus({ type: 'error', message: t.error });
             console.error('Erreur EmailJS:', error);
         } finally {
             setLoading(false);
@@ -74,7 +79,7 @@ const Contact = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-textMain font-heading">
-                        Contactez <span className="text-primary">Moi</span>
+                        {t.title} <span className="text-primary">{t.titleHighlight}</span>
                     </h2>
                 </motion.div>
 
@@ -103,9 +108,7 @@ const Contact = () => {
                                 </div>
                             </div>
                             <p className="text-textMuted text-sm leading-relaxed transition-colors duration-300">
-                                Pour toute demande d&apos;information, de devis ou de collaboration,
-                                n&apos;hésitez pas à me contacter. Je suis disponible pour discuter de vos
-                                projets et vous accompagner dans votre transformation digitale.
+                                {t.description}
                             </p>
                         </div>
                     </motion.div>
@@ -124,7 +127,7 @@ const Contact = () => {
                                     <input
                                         type="text"
                                         name="firstName"
-                                        placeholder="Prénom"
+                                        placeholder={t.firstName}
                                         value={formData.firstName}
                                         onChange={handleChange}
                                         className="w-full bg-card border border-borderDark rounded-md px-4 py-3 text-textMain focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-300 text-sm placeholder:text-textMuted"
@@ -135,7 +138,7 @@ const Contact = () => {
                                     <input
                                         type="text"
                                         name="lastName"
-                                        placeholder="Nom"
+                                        placeholder={t.lastName}
                                         value={formData.lastName}
                                         onChange={handleChange}
                                         className="w-full bg-card border border-borderDark rounded-md px-4 py-3 text-textMain focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-300 text-sm placeholder:text-textMuted"
@@ -149,7 +152,7 @@ const Contact = () => {
                                     <input
                                         type="email"
                                         name="email"
-                                        placeholder="Email"
+                                        placeholder={t.email}
                                         value={formData.email}
                                         onChange={handleChange}
                                         className="w-full bg-card border border-borderDark rounded-md px-4 py-3 text-textMain focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-300 text-sm placeholder:text-textMuted"
@@ -160,7 +163,7 @@ const Contact = () => {
                                     <input
                                         type="text"
                                         name="subject"
-                                        placeholder="Sujet"
+                                        placeholder={t.subject}
                                         value={formData.subject}
                                         onChange={handleChange}
                                         className="w-full bg-card border border-borderDark rounded-md px-4 py-3 text-textMain focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors duration-300 text-sm placeholder:text-textMuted"
@@ -172,7 +175,7 @@ const Contact = () => {
                             <div>
                                 <textarea
                                     name="message"
-                                    placeholder="Message"
+                                    placeholder={t.message}
                                     rows="6"
                                     value={formData.message}
                                     onChange={handleChange}
@@ -201,7 +204,7 @@ const Contact = () => {
                                 whileHover={{ scale: loading ? 1 : 1.05, y: loading ? 0 : -2 }}
                                 whileTap={{ scale: 0.95 }}
                             >
-                                {loading ? 'Envoi en cours...' : 'Envoyer'}
+                                {loading ? t.sending : t.send}
                             </motion.button>
                         </form>
                     </motion.div>

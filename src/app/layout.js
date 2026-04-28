@@ -8,6 +8,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
 import { GoogleAnalytics, GoogleTagManager } from '@next/third-parties/google';
 import CustomCursor from '@/components/CustomCursor';
 import ScrollProgress from '@/components/ScrollProgress';
+import { LanguageProvider } from '@/components/LanguageProvider';
 
 config.autoAddCss = false;
 
@@ -79,9 +80,11 @@ export default function RootLayout({ children }) {
         <CustomCursor />
         <ScrollProgress />
         <AppRouterCacheProvider>
-          <ThemeProvider>
-            {children}
-          </ThemeProvider>
+          <LanguageProvider>
+            <ThemeProvider>
+              {children}
+            </ThemeProvider>
+          </LanguageProvider>
         </AppRouterCacheProvider>
       </body>
     </html>

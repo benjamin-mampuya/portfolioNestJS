@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
 
 export default function Preloader() {
   const [loading, setLoading] = useState(true);
@@ -21,6 +23,9 @@ export default function Preloader() {
     return () => window.removeEventListener("load", handleLoad);
   }, []);
 
+  const { language } = useLanguage();
+  const t = translations[language].preloader;
+
   if (!loading) return null;
 
   return (
@@ -36,7 +41,7 @@ export default function Preloader() {
         </div>
         {/* Texte loading */}
         <div className="text-primary font-outfit text-sm font-medium tracking-widest animate-pulse">
-          Chargement...
+          {t.loading}
         </div>
       </div>
     </div>

@@ -7,7 +7,13 @@ import { faEnvelope, faPhone, faMapMarkerAlt } from '@fortawesome/free-solid-svg
 import { faLinkedinIn, faGithub, faInstagram, faFacebook } from '@fortawesome/free-brands-svg-icons';
 import Link from 'next/link';
 
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
+
 const Footer = () => {
+    const { language } = useLanguage();
+    const t = translations[language].footer;
+
     return (
         <footer className="bg-background pt-8 pb-8 relative overflow-hidden z-0 transition-colors duration-300">
             {/* Background Glow */}
@@ -21,16 +27,16 @@ const Footer = () => {
                             Ben <span className="text-primary">Mampuya</span>
                         </h2>
                         <p className="text-textMuted text-sm leading-relaxed max-w-sm mb-8 transition-colors duration-300">
-                            Création d&apos;expériences digitales modernes, interactives et centrées sur l&apos;utilisateur. Transformons vos idées en réalité.
+                            {t.tagline}
                         </p>
                         <p className="text-textMuted/60 text-xs font-medium transition-colors duration-300">
-                            &copy; 2026 BEN MAMPUYA. Tous droits réservés.
+                            {t.rights}
                         </p>
                     </div>
 
                     {/* Column 2: Contact Info */}
                     <div className="flex flex-col items-center md:items-start">
-                        <h3 className="text-textMain text-lg font-semibold mb-6 font-heading border-b border-primary/30 pb-2 inline-block transition-colors duration-300">Coordonnées</h3>
+                        <h3 className="text-textMain text-lg font-semibold mb-6 font-heading border-b border-primary/30 pb-2 inline-block transition-colors duration-300">{t.contactInfo}</h3>
                         <div className="space-y-4">
                             <div className="flex items-start text-textMuted hover:text-primary transition-colors duration-300 group">
                                 <FontAwesomeIcon icon={faEnvelope} className="w-5 h-5 text-primary mt-0.5 mr-4 group-hover:scale-110 transition-transform" />
@@ -42,14 +48,14 @@ const Footer = () => {
                             </div>
                             <div className="flex items-start text-textMuted group transition-colors duration-300">
                                 <FontAwesomeIcon icon={faMapMarkerAlt} className="w-5 h-5 text-primary mt-0.5 mr-4" />
-                                <span className="text-sm max-w-[200px] md:max-w-none text-left">Avenue Mont RWENZORI, Quartier Himbi, Goma, Nord-Kivu, RDC</span>
+                                <span className="text-sm max-w-[200px] md:max-w-none text-left">{t.address}</span>
                             </div>
                         </div>
                     </div>
 
                     {/* Column 3: Social Links */}
                     <div className="flex flex-col items-center md:items-start">
-                        <h3 className="text-textMain text-lg font-semibold mb-6 font-heading border-b border-primary/30 pb-2 inline-block transition-colors duration-300">Réseaux Sociaux</h3>
+                        <h3 className="text-textMain text-lg font-semibold mb-6 font-heading border-b border-primary/30 pb-2 inline-block transition-colors duration-300">{t.socials}</h3>
                         <div className="flex space-x-4">
                             <a href="https://linkedin.com/in/ben-mampuya" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-card flex items-center justify-center text-textMuted hover:bg-primary hover:text-background hover:-translate-y-1 transition-all duration-300 border border-borderDark hover:border-primary shadow-lg">
                                 <FontAwesomeIcon icon={faLinkedinIn} className="w-4 h-4" />

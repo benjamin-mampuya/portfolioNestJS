@@ -2,8 +2,13 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
 
 const Skills = () => {
+    const { language } = useLanguage();
+    const t = translations[language].skills;
+
     const skills = [
         { name: 'HTML 5', percentage: 95 },
         { name: 'CSS 3', percentage: 90 },
@@ -28,7 +33,7 @@ const Skills = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-textMain font-heading">
-                        Mes <span className="text-primary">Compétences</span>
+                        {t.title} <span className="text-primary">{t.titleHighlight}</span>
                     </h2>
                 </motion.div>
 

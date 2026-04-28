@@ -13,13 +13,33 @@ const fullData = [
     { subject: 'Animations', A: 85, fullMark: 100 },
 ];
 
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
+
 const DataExpertise = () => {
+    const { language } = useLanguage();
+    const t = translations[language].expertise;
+
+    const fullData = [
+        { subject: t.subjects.web, A: 90, fullMark: 100 },
+        { subject: t.subjects.design, A: 85, fullMark: 100 },
+        { subject: t.subjects.data, A: 75, fullMark: 100 },
+        { subject: t.subjects.meal, A: 80, fullMark: 100 },
+        { subject: t.subjects.perf, A: 80, fullMark: 100 },
+        { subject: t.subjects.anim, A: 85, fullMark: 100 },
+    ];
+
     // Initialiser les données à 0 pour que les axes s'affichent
     const initialChartData = fullData.map(d => ({ ...d, A: 0 }));
     const [chartData, setChartData] = useState(initialChartData);
     
     const chartRef = useRef(null);
     const isChartInView = useInView(chartRef, { once: true, margin: "-100px" });
+
+    useEffect(() => {
+        // Reset chart data when language changes or component mounts
+        setChartData(fullData.map(d => ({ ...d, A: 0 })));
+    }, [language]);
 
     useEffect(() => {
         if (isChartInView) {
@@ -38,7 +58,7 @@ const DataExpertise = () => {
             }, 800); // 0.8s par élément
             return () => clearInterval(interval);
         }
-    }, [isChartInView]);
+    }, [isChartInView, language]); // Re-trigger if language changes while in view
 
     const cardVariants = {
         hidden: { opacity: 0, x: 50 },
@@ -60,10 +80,10 @@ const DataExpertise = () => {
                     viewport={{ once: true }}
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-textMain font-heading">
-                        Mon <span className="text-primary">Expertise</span>
+                        {t.title} <span className="text-primary">{t.titleHighlight}</span>
                     </h2>
                     <p className="mt-4 text-textMuted max-w-2xl mx-auto">
-                        Une vision holistique du développement, combinant design, ingénierie et analyse de données.
+                        {t.subtitle}
                     </p>
                 </motion.div>
 
@@ -101,56 +121,25 @@ const DataExpertise = () => {
 
                     {/* Section Droite : Cartes */}
                     <div className="flex flex-col justify-between h-full space-y-6">
-                        <motion.div
-                            custom={0}
-                            variants={cardVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            whileHover={{ scale: 1.02, y: -5 }}
-                            className="bg-card p-6 rounded-xl border border-borderDark hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-default flex-1 flex flex-col justify-center"
-                        >
-                            <h3 className="text-xl font-bold text-textMain mb-2 text-center">
-                                Front-End & UI/UX
-                            </h3>
-                            <p className="text-textMuted">
-                                Création d&apos;interfaces utilisateur performantes et esthétiques avec React, Next.js et Framer Motion. Focus sur l&apos;expérience utilisateur et l&apos;accessibilité.
-                            </p>
-                        </motion.div>
-
-                        <motion.div
-                            custom={1}
-                            variants={cardVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            whileHover={{ scale: 1.02, y: -5 }}
-                            className="bg-card p-6 rounded-xl border border-borderDark hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-default flex-1 flex flex-col justify-center"
-                        >
-                            <h3 className="text-xl font-bold text-textMain mb-2 text-center">
-                                Analyse & Data
-                            </h3>
-                            <p className="text-textMuted">
-                                Intégration d&apos;outils analytiques, optimisation des performances (Web Vitals) et création de tableaux de bord interactifs pour le suivi des KPI.
-                            </p>
-                        </motion.div>
-                        
-                        <motion.div
-                            custom={2}
-                            variants={cardVariants}
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true }}
-                            whileHover={{ scale: 1.02, y: -5 }}
-                            className="bg-card p-6 rounded-xl border border-borderDark hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-default flex-1 flex flex-col justify-center"
-                        >
-                            <h3 className="text-xl font-bold text-textMain mb-2 text-center">
-                                Agent MEAL
-                            </h3>
-                            <p className="text-textMuted">
-                                Expertise en Suivi, Évaluation, Redevabilité et Apprentissage. Conception de systèmes de collecte de données, analyse d&apos;impact et création de rapports stratégiques pour orienter la prise de décision.
-                            </p>
-                        </motion.div>
+                        {t.cards.map((card, index) => (
+                            <motion.div
+                                key={index}
+                                custom={index}
+                                variants={cardVariants}
+                                initial="hidden"
+                                whileInView="visible"
+                                viewport={{ once: true }}
+                                whileHover={{ scale: 1.02, y: -5 }}
+                                className="bg-card p-6 rounded-xl border border-borderDark hover:border-primary/50 hover:shadow-lg hover:shadow-primary/10 transition-all duration-300 cursor-default flex-1 flex flex-col justify-center"
+                            >
+                                <h3 className="text-xl font-bold text-textMain mb-2 text-center">
+                                    {card.title}
+                                </h3>
+                                <p className="text-textMuted">
+                                    {card.description}
+                                </p>
+                            </motion.div>
+                        ))}
                     </div>
 
                 </div>

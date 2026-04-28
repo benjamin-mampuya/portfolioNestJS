@@ -7,11 +7,16 @@ import { motion } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes, faCircleHalfStroke } from '@fortawesome/free-solid-svg-icons';
 import { useTheme } from '@/components/ThemeProvider';
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const { theme, toggleTheme } = useTheme();
+    const { language, toggleLanguage } = useLanguage();
     const pathname = usePathname();
+
+    const t = translations[language].nav;
 
     const toggleMenu = () => setIsOpen(!isOpen);
 
@@ -24,13 +29,13 @@ const Navbar = () => {
     };
 
     const navLinks = [
-        { name: 'Accueil', path: '#home' },
-        { name: 'À propos', path: '#about' },
-        { name: 'Compétences', path: '#skills' },
-        { name: 'Services', path: '#services' },
-        { name: 'Projets', path: '#projects' },
-        { name: 'Blog', path: '/blog' },
-        { name: 'Contact', path: '#contact' },
+        { name: t.home, path: '#home' },
+        { name: t.about, path: '#about' },
+        { name: t.skills, path: '#skills' },
+        { name: t.services, path: '#services' },
+        { name: t.projects, path: '#projects' },
+        { name: t.blog, path: '/blog' },
+        { name: t.contact, path: '#contact' },
     ];
 
     return (
@@ -84,6 +89,17 @@ const Navbar = () => {
                         ))}
 
                         <motion.button
+                            onClick={toggleLanguage}
+                            className="text-textMain hover:text-primary px-3 py-2 focus:outline-none transition-colors text-sm font-bold border border-borderDark rounded-md"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 0.5, delay: 0.5 }}
+                            aria-label="Toggle Language"
+                        >
+                            {language === 'fr' ? 'EN' : 'FR'}
+                        </motion.button>
+
+                        <motion.button
                             onClick={toggleTheme}
                             className="text-textMain hover:text-primary p-2 focus:outline-none transition-colors"
                             initial={{ opacity: 0 }}
@@ -97,6 +113,13 @@ const Navbar = () => {
 
                     {/* Mobile menu button and Theme Toggle */}
                     <div className="md:hidden flex items-center space-x-4">
+                        <button
+                            onClick={toggleLanguage}
+                            className="text-textMain hover:text-primary px-2 py-1 focus:outline-none transition-colors text-xs font-bold border border-borderDark rounded-md"
+                            aria-label="Toggle Language"
+                        >
+                            {language === 'fr' ? 'EN' : 'FR'}
+                        </button>
                         <button
                             onClick={toggleTheme}
                             className="text-textMain hover:text-primary p-2 focus:outline-none transition-colors"

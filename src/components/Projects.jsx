@@ -5,110 +5,74 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { projectsData } from '@/data/projects';
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
 
 const Projects = () => {
-
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.15,
-                delayChildren: 0.1,
-            },
-        },
-    };
-
-    const projectVariants = {
-        hidden: { opacity: 0, scale: 0.8 },
-        visible: {
-            opacity: 1,
-            scale: 1,
-            transition: { duration: 0.5, ease: "easeOut" },
-        },
-    };
+    const { language } = useLanguage();
+    const t = translations[language].projects;
 
     return (
-        <>
-            <section id="projects" className="py-12 md:py-16 bg-background relative border-b border-borderDark z-10 transition-colors duration-300">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <motion.div
-                        className="text-center mb-16"
-                        initial={{ opacity: 0, y: -20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
-                        <h2 className="text-3xl md:text-4xl font-bold text-textMain font-heading">
-                            Mes <span className="text-primary">Projets</span>
-                        </h2>
-                    </motion.div>
+        <section id="projects" className="py-12 md:py-16 bg-background relative border-b border-borderDark z-20 transition-colors duration-300">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <motion.div
+                    className="text-center mb-16"
+                    initial={{ opacity: 0, y: -20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                >
+                    <h2 className="text-3xl md:text-4xl font-bold text-textMain font-heading">
+                        {t.title} <span className="text-primary">{t.titleHighlight}</span>
+                    </h2>
+                </motion.div>
 
-                    <motion.div
-                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
-                        variants={containerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, margin: "-100px" }}
-                    >
-                        {projectsData.map((project, index) => (
-                            <motion.div
-                                key={index}
-                                variants={projectVariants}
-                                className="group relative overflow-hidden rounded-xl bg-card border border-borderDark h-80 sm:h-[22rem] flex-shrink-0 cursor-hover"
-                                whileHover={{ y: -10 }}
-                            >
-                                <Link href={`/projets/${project.slug}`} className="block w-full h-full cursor-none">
-                                    {/* Project Image */}
-                                    <div className="absolute inset-1 sm:inset-1.5 rounded-lg overflow-hidden bg-background/30">
-                                        <Image
-                                            src={project.image}
-                                            alt={project.title}
-                                            fill
-                                            className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                                            priority={false}
-                                        />
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {projectsData.map((project, index) => (
+                        <motion.div
+                            key={project.id}
+                            className="group relative bg-card rounded-2xl overflow-hidden border border-borderDark hover:border-primary transition-all duration-500 shadow-lg"
+                            initial={{ opacity: 0, y: 30 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.5, delay: index * 0.1 }}
+                            viewport={{ once: true }}
+                            whileHover={{ y: -10 }}
+                        >
+                            <div className="relative h-64 overflow-hidden">
+                                <Image
+                                    src={project.image}
+                                    alt={project[language].title}
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-6">
+                                    <div className="flex flex-wrap gap-2 mb-4">
+                                        {project.technologies.slice(0, 3).map((tech, i) => (
+                                            <span key={i} className="px-3 py-1 text-[10px] uppercase tracking-wider font-semibold bg-primary/20 text-primary border border-primary/30 rounded-full backdrop-blur-md">
+                                                {tech}
+                                            </span>
+                                        ))}
                                     </div>
-
-                                    {/* Overlay */}
-                                    <motion.div
-                                        className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6"
-                                        initial={{ opacity: 0 }}
-                                        whileHover={{ opacity: 1 }}
-                                        transition={{ duration: 0.3 }}
+                                    <Link
+                                        href={`/projets/${project.slug}`}
+                                        className="inline-flex items-center text-white font-semibold group/link"
                                     >
-                                        <motion.h3
-                                            className="text-xl font-bold text-white mb-1"
-                                            initial={{ y: 10 }}
-                                            whileHover={{ y: 0 }}
-                                            transition={{ duration: 0.3 }}
-                                        >
-                                            {project.title}
-                                        </motion.h3>
-                                        <motion.p
-                                            className="text-primary text-sm"
-                                            initial={{ y: 10 }}
-                                            whileHover={{ y: 0 }}
-                                            transition={{ duration: 0.3, delay: 0.05 }}
-                                        >
-                                            {project.category}
-                                        </motion.p>
-                                        <motion.div
-                                            className="mt-4 w-10 h-10 rounded-full bg-primary flex items-center justify-center"
-                                            initial={{ y: 10 }}
-                                            whileHover={{ y: 0, scale: 1.1 }}
-                                            transition={{ duration: 0.3, delay: 0.1 }}
-                                        >
-                                            <span className="text-gray-900 font-bold">↗</span>
-                                        </motion.div>
-                                    </motion.div>
-                                </Link>
-                            </motion.div>
-                        ))}
-                    </motion.div>
+                                        {t.viewProject}
+                                        <svg className="w-5 h-5 ml-2 transform group-hover/link:translate-x-2 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                        </svg>
+                                    </Link>
+                                </div>
+                            </div>
+                            <div className="p-6">
+                                <span className="text-xs font-bold text-primary uppercase tracking-[0.2em] mb-2 block">{project[language].category}</span>
+                                <h3 className="text-xl font-bold text-textMain group-hover:text-primary transition-colors font-heading">{project[language].title}</h3>
+                            </div>
+                        </motion.div>
+                    ))}
                 </div>
-            </section>
-        </>
+            </div>
+        </section>
     );
 };
 

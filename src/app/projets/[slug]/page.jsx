@@ -8,14 +8,21 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { projectsData } from '@/data/projects';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
 
 export default function ProjectPage({ params }) {
+    const { language } = useLanguage();
+    const t = translations[language].projects;
     const project = projectsData.find(p => p.slug === params.slug);
     const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
     if (!project) {
         notFound();
     }
+
+    // Access translated content
+    const pContent = project[language];
 
     const fadeUpVariants = {
         hidden: { opacity: 0, y: 40 },
@@ -34,7 +41,7 @@ export default function ProjectPage({ params }) {
                         transition={{ duration: 0.5 }}
                     >
                         <Link href="/#projects" className="text-primary hover:text-cyan-400 mb-10 inline-flex items-center gap-2 group cursor-hover transition-colors">
-                            <span className="group-hover:-translate-x-1 transition-transform">←</span> Retour aux projets
+                            <span className="group-hover:-translate-x-1 transition-transform">←</span> {t.backToProjects}
                         </Link>
                     </motion.div>
                     
@@ -47,7 +54,7 @@ export default function ProjectPage({ params }) {
                             transition={{ duration: 0.5, delay: 0.1 }}
                         >
                             <span className="px-4 py-1.5 bg-primary/10 border border-primary/20 text-primary rounded-full text-sm font-semibold tracking-wider uppercase">
-                                {project.category}
+                                {pContent.category}
                             </span>
                         </motion.div>
                         <motion.h1 
@@ -56,7 +63,7 @@ export default function ProjectPage({ params }) {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
-                            {project.title}
+                            {pContent.title}
                         </motion.h1>
                     </header>
 
@@ -71,7 +78,7 @@ export default function ProjectPage({ params }) {
                     >
                         <Image
                             src={project.image}
-                            alt={project.title}
+                            alt={pContent.title}
                             fill
                             className="object-cover transition-transform duration-700 group-hover:scale-105"
                             priority
@@ -85,32 +92,32 @@ export default function ProjectPage({ params }) {
                             <motion.section variants={fadeUpVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="w-12 h-[2px] bg-primary"></div>
-                                    <h2 className="text-3xl font-bold font-heading text-textMain">Le Défi</h2>
+                                    <h2 className="text-3xl font-bold font-heading text-textMain">{t.challenge}</h2>
                                 </div>
                                 <p className="text-textMuted leading-relaxed text-lg lg:text-xl font-light text-justify">
-                                    {project.problem}
+                                    {pContent.problem}
                                 </p>
                             </motion.section>
 
                             <motion.section variants={fadeUpVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="w-12 h-[2px] bg-primary"></div>
-                                    <h2 className="text-3xl font-bold font-heading text-textMain">La Solution</h2>
+                                    <h2 className="text-3xl font-bold font-heading text-textMain">{t.solution}</h2>
                                 </div>
                                 <p className="text-textMuted leading-relaxed text-lg lg:text-xl font-light text-justify">
-                                    {project.solution}
+                                    {pContent.solution}
                                 </p>
                             </motion.section>
 
                             <motion.section variants={fadeUpVariants} initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-100px" }}>
                                 <div className="flex items-center gap-4 mb-6">
                                     <div className="w-12 h-[2px] bg-primary"></div>
-                                    <h2 className="text-3xl font-bold font-heading text-textMain">L&apos;Impact</h2>
+                                    <h2 className="text-3xl font-bold font-heading text-textMain">{t.impact}</h2>
                                 </div>
                                 <div className="p-8 rounded-2xl bg-primary/5 border border-primary/10 relative overflow-hidden">
                                     <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-3xl rounded-full"></div>
                                     <p className="text-textMain leading-relaxed text-lg font-medium relative z-10 text-justify">
-                                        {project.impact}
+                                        {pContent.impact}
                                     </p>
                                 </div>
                             </motion.section>
@@ -126,7 +133,7 @@ export default function ProjectPage({ params }) {
                                 viewport={{ once: true }}
                             >
                                 <h3 className="text-xl font-bold font-heading mb-6 text-textMain border-b border-borderDark pb-4">
-                                    Technologies
+                                    {t.technologies}
                                 </h3>
                                 <div className="flex flex-wrap gap-3">
                                     {project.technologies.map(tech => (

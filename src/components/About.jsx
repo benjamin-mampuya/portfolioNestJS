@@ -5,15 +5,19 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCode, faPalette, faUsers, faServer } from '@fortawesome/free-solid-svg-icons';
+import { useLanguage } from '@/components/LanguageProvider';
+import { translations } from '@/data/translations';
 
 const About = () => {
+    const { language } = useLanguage();
+    const t = translations[language].about;
     const [activeTab, setActiveTab] = useState('education');
 
     const tabs = [
-        { id: 'education', label: 'Qualifications éducatives' },
-        { id: 'courses', label: 'Formations courtes' },
-        { id: 'experience', label: 'Expérience' },
-        { id: 'skills', label: 'Compétences' },
+        { id: 'education', label: t.tabs.education },
+        { id: 'courses', label: t.tabs.courses },
+        { id: 'experience', label: t.tabs.experience },
+        { id: 'skills', label: t.tabs.skills },
     ];
 
     const tabContents = {
@@ -21,20 +25,20 @@ const About = () => {
             <div className="text-textMuted space-y-6 animate-fadeIn h-full overflow-y-auto pr-2" style={{ maxHeight: '400px' }}>
                 <div className="space-y-4">
                     <div className="flex flex-col">
-                        <h4 className="text-lg font-bold text-textMain font-heading">Licence en Systèmes Informatiques, Réseaux et Télécommunications (LSI)</h4>
-                        <span className="text-primary text-sm mb-2">Institut Supérieur d’Informatique et de Gestion (ISIG), Goma (2015-2020)</span>
+                        <h4 className="text-lg font-bold text-textMain font-heading">{t.education.lsi}</h4>
+                        <span className="text-primary text-sm mb-2">{t.education.lsiSub}</span>
                     </div>
                     <div className="flex flex-col">
-                        <h4 className="text-lg font-bold text-textMain font-heading">Diplôme d’État en Secrétariat Informatique</h4>
-                        <span className="text-primary text-sm mb-2">Institut Saint Marc, Goma (2009-2015)</span>
+                        <h4 className="text-lg font-bold text-textMain font-heading">{t.education.diplome}</h4>
+                        <span className="text-primary text-sm mb-2">{t.education.diplomeSub}</span>
                     </div>
                     <div className="flex flex-col">
-                        <h4 className="text-lg font-bold text-textMain font-heading">Formation en Suivi et Évaluation de projets</h4>
-                        <span className="text-primary text-sm mb-2">Organisée par Bensizwe RDC (16 au 27 avril 2022)</span>
+                        <h4 className="text-lg font-bold text-textMain font-heading">{t.education.meal}</h4>
+                        <span className="text-primary text-sm mb-2">{t.education.mealSub}</span>
                     </div>
                     <div className="flex flex-col">
-                        <h4 className="text-lg font-bold text-textMain font-heading">Coding Bootcamp en Développement Full-Stack</h4>
-                        <span className="text-primary text-sm mb-2">Programme Talent 4 Startups, financé par Digital Africa chez Afrix Global, Goma (2025 - 2026)</span>
+                        <h4 className="text-lg font-bold text-textMain font-heading">{t.education.bootcamp}</h4>
+                        <span className="text-primary text-sm mb-2">{t.education.bootcampSub}</span>
                     </div>
                 </div>
             </div>
@@ -43,18 +47,16 @@ const About = () => {
             <div className="text-textMuted space-y-6 animate-fadeIn">
                 <div className="space-y-6">
                     <div className="border-l-2 border-primary pl-4">
-                        <h4 className="text-lg font-bold text-textMain font-heading">Programme Talent 4 Startups – Développement Full-Stack</h4>
-                        <span className="text-primary text-sm block mb-2">Afrix Global, financé par Digital Africa | Septembre 2025 – Février 2026</span>
+                        <h4 className="text-lg font-bold text-textMain font-heading">{t.courses.title1}</h4>
+                        <span className="text-primary text-sm block mb-2">{t.courses.sub1}</span>
                         <ul className="list-disc list-inside text-sm space-y-1 text-textMuted">
-                            <li>Formation intensive en développement web.</li>
-                            <li>Technologies : HTML, CSS, JavaScript, React, Tailwind, Git, Axios.</li>
-                            <li>Réalisation de projets web interactifs et sites responsives.</li>
+                            {t.courses.list1.map((item, idx) => <li key={idx}>{item}</li>)}
                         </ul>
                     </div>
                     <div className="border-l-2 border-primary pl-4">
-                        <h4 className="text-lg font-bold text-textMain font-heading">Formation en analyse de données et outils numériques</h4>
+                        <h4 className="text-lg font-bold text-textMain font-heading">{t.courses.title2}</h4>
                         <ul className="list-disc list-inside text-sm space-y-1 text-textMuted mt-2">
-                            <li>Excel avancé et Power BI pour l’analyse et la visualisation des données.</li>
+                            {t.courses.list2.map((item, idx) => <li key={idx}>{item}</li>)}
                         </ul>
                     </div>
                 </div>
@@ -67,15 +69,15 @@ const About = () => {
                     <div className="relative flex items-start justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                         <div className="flex items-start justify-center w-5 h-5 rounded-full border-2 border-primary bg-card shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 hidden md:flex mt-6"></div>
                         <div className="w-[calc(100%-2rem)] md:w-[calc(50%-1.5rem)] p-4 rounded-xl border border-borderDark bg-card backdrop-blur-sm z-10 transition-transform duration-300 hover:-translate-y-1">
-                            <h4 className="text-lg font-bold text-textMain mb-2 font-heading">Chargé de Suivi et Évaluation (MEAL)</h4>
+                            <h4 className="text-lg font-bold text-textMain mb-2 font-heading">{t.experience.job1}</h4>
                             <div className="flex flex-col mb-3">
-                                <span className="text-primary text-sm font-semibold">Projet RESICO (GIZ / Don Bosco)</span>
-                                <span className="text-textMuted text-xs">Avril 2024 – Août 2025</span>
+                                <span className="text-primary text-sm font-semibold">{t.experience.company1}</span>
+                                <span className="text-textMuted text-xs">{t.experience.date1}</span>
                             </div>
                             <ul className="list-none text-xs text-textMuted space-y-1">
-                                <li className="flex items-start"><span className="text-primary mr-2">▸</span><span>Suivi et évaluation des activités du projet.</span></li>
-                                <li className="flex items-start"><span className="text-primary mr-2">▸</span><span>Collecte, analyse et reporting des données des bénéficiaires et des indicateurs.</span></li>
-                                <li className="flex items-start"><span className="text-primary mr-2">▸</span><span>Collaboration avec les équipes terrain pour améliorer la qualité des informations.</span></li>
+                                {t.experience.list1.map((item, idx) => (
+                                    <li key={idx} className="flex items-start"><span className="text-primary mr-2">▸</span><span>{item}</span></li>
+                                ))}
                             </ul>
                         </div>
                     </div>
@@ -84,15 +86,15 @@ const About = () => {
                     <div className="relative flex items-start justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                         <div className="flex items-start justify-center w-5 h-5 rounded-full border-2 border-primary bg-card shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 hidden md:flex mt-6"></div>
                         <div className="w-[calc(100%-2rem)] md:w-[calc(50%-1.5rem)] p-4 rounded-xl border border-borderDark bg-card backdrop-blur-sm z-10 transition-transform duration-300 hover:-translate-y-1">
-                            <h4 className="text-lg font-bold text-textMain mb-2 font-heading">Responsable Communication et Formation en Informatique</h4>
+                            <h4 className="text-lg font-bold text-textMain mb-2 font-heading">{t.experience.job2}</h4>
                             <div className="flex flex-col mb-3">
-                                <span className="text-primary text-sm font-semibold">UBS Congo</span>
-                                <span className="text-textMuted text-xs">Janvier 2024 – Juillet 2024</span>
+                                <span className="text-primary text-sm font-semibold">{t.experience.company2}</span>
+                                <span className="text-textMuted text-xs">{t.experience.date2}</span>
                             </div>
                             <ul className="list-none text-xs text-textMuted space-y-1">
-                                <li className="flex items-start"><span className="text-primary mr-2">▸</span><span>Formation en conception de questionnaires d’enquête.</span></li>
-                                <li className="flex items-start"><span className="text-primary mr-2">▸</span><span>Formation en collecte et traitement de données numériques.</span></li>
-                                <li className="flex items-start"><span className="text-primary mr-2">▸</span><span>Formation en Excel avancé et Power BI.</span></li>
+                                {t.experience.list2.map((item, idx) => (
+                                    <li key={idx} className="flex items-start"><span className="text-primary mr-2">▸</span><span>{item}</span></li>
+                                ))}
                             </ul>
                         </div>
                     </div>
@@ -101,15 +103,15 @@ const About = () => {
                     <div className="relative flex items-start justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
                         <div className="flex items-start justify-center w-5 h-5 rounded-full border-2 border-primary bg-card shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10 hidden md:flex mt-6"></div>
                         <div className="w-[calc(100%-2rem)] md:w-[calc(50%-1.5rem)] p-4 rounded-xl border border-borderDark bg-card backdrop-blur-sm z-10 transition-transform duration-300 hover:-translate-y-1">
-                            <h4 className="text-lg font-bold text-textMain mb-2 font-heading">Développeur Front-End (formation pratique)</h4>
+                            <h4 className="text-lg font-bold text-textMain mb-2 font-heading">{t.experience.job3}</h4>
                             <div className="flex flex-col mb-3">
-                                <span className="text-primary text-sm font-semibold">Afrix Global</span>
-                                <span className="text-textMuted text-xs">Septembre 2025 – Février 2026</span>
+                                <span className="text-primary text-sm font-semibold">{t.experience.company3}</span>
+                                <span className="text-textMuted text-xs">{t.experience.date3}</span>
                             </div>
                             <ul className="list-none text-xs text-textMuted space-y-1">
-                                <li className="flex items-start"><span className="text-primary mr-2">▸</span><span>Développement d’applications web interactives.</span></li>
-                                <li className="flex items-start"><span className="text-primary mr-2">▸</span><span>Intégration d’interfaces utilisateurs modernes et responsives.</span></li>
-                                <li className="flex items-start"><span className="text-primary mr-2">▸</span><span>Collaboration en équipe et résolution de bugs.</span></li>
+                                {t.experience.list3.map((item, idx) => (
+                                    <li key={idx} className="flex items-start"><span className="text-primary mr-2">▸</span><span>{item}</span></li>
+                                ))}
                             </ul>
                         </div>
                     </div>
@@ -121,30 +123,30 @@ const About = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     {/* Category 1 */}
                     <div className="bg-card p-4 rounded-xl border border-borderDark flex flex-col h-full">
-                        <h4 className="text-primary text-sm font-bold mb-3 border-b border-borderLight pb-2 uppercase tracking-wide font-heading">Techniques</h4>
+                        <h4 className="text-primary text-sm font-bold mb-3 border-b border-borderLight pb-2 uppercase tracking-wide font-heading">{t.skillsTab.tech}</h4>
                         <ul className="space-y-2 text-sm text-textMuted flex-grow">
-                            <li className="flex items-start"><span className="text-primary mr-2">✓</span> <span><span className="text-textMain font-medium">Développement Web :</span> HTML, CSS, JavaScript, React.</span></li>
-                            <li className="flex items-start"><span className="text-primary mr-2">✓</span> <span><span className="text-textMain font-medium">UI/UX Design :</span> conception d’interfaces ergonomiques.</span></li>
-                            <li className="flex items-start"><span className="text-primary mr-2">✓</span> <span><span className="text-textMain font-medium">Analyse de données :</span> Excel avancé, Power BI.</span></li>
-                            <li className="flex items-start"><span className="text-primary mr-2">✓</span> <span><span className="text-textMain font-medium">Administration réseaux et systèmes :</span> configuration LAN/WAN, bases Cisco et Mikrotik.</span></li>
+                            <li className="flex items-start"><span className="text-primary mr-2">✓</span> <span><span className="text-textMain font-medium">{t.skillsTab.webDev}</span> HTML, CSS, JavaScript, React.</span></li>
+                            <li className="flex items-start"><span className="text-primary mr-2">✓</span> <span><span className="text-textMain font-medium">{t.skillsTab.uiux}</span> conception d’interfaces ergonomiques.</span></li>
+                            <li className="flex items-start"><span className="text-primary mr-2">✓</span> <span><span className="text-textMain font-medium">{t.skillsTab.data}</span> Excel avancé, Power BI.</span></li>
+                            <li className="flex items-start"><span className="text-primary mr-2">✓</span> <span><span className="text-textMain font-medium">{t.skillsTab.admin}</span> configuration LAN/WAN, bases Cisco et Mikrotik.</span></li>
                         </ul>
                     </div>
                     {/* Category 2 */}
                     <div className="bg-card p-4 rounded-xl border border-borderDark flex flex-col h-full">
-                        <h4 className="text-primary text-sm font-bold mb-3 border-b border-borderLight pb-2 uppercase tracking-wide font-heading">Outils et technologies</h4>
+                        <h4 className="text-primary text-sm font-bold mb-3 border-b border-borderLight pb-2 uppercase tracking-wide font-heading">{t.skillsTab.tools}</h4>
                         <ul className="space-y-2 text-sm text-textMuted flex-grow">
-                            <li className="flex items-center"><span className="text-primary mr-2">✓</span> <span>Figma et outils de design UI.</span></li>
-                            <li className="flex items-center"><span className="text-primary mr-2">✓</span> <span>Git et outils collaboratifs.</span></li>
-                            <li className="flex items-center"><span className="text-primary mr-2">✓</span> <span>Outils de collecte et gestion de données.</span></li>
+                            <li className="flex items-center"><span className="text-primary mr-2">✓</span> <span>{t.skillsTab.figma}</span></li>
+                            <li className="flex items-center"><span className="text-primary mr-2">✓</span> <span>{t.skillsTab.git}</span></li>
+                            <li className="flex items-center"><span className="text-primary mr-2">✓</span> <span>{t.skillsTab.dataTools}</span></li>
                         </ul>
                     </div>
                     {/* Category 3 */}
                     <div className="bg-card p-4 rounded-xl border border-borderDark md:col-span-2">
-                        <h4 className="text-primary text-sm font-bold mb-3 border-b border-borderLight pb-2 uppercase tracking-wide font-heading">Autres compétences</h4>
+                        <h4 className="text-primary text-sm font-bold mb-3 border-b border-borderLight pb-2 uppercase tracking-wide font-heading">{t.skillsTab.other}</h4>
                         <div className="flex flex-wrap gap-2">
-                            <span className="px-3 py-1.5 bg-background/50 text-textMuted rounded-full text-xs border border-borderLight hover:bg-primary hover:text-gray-900 hover:border-primary transition-colors cursor-default">Community management et communication digitale</span>
-                            <span className="px-3 py-1.5 bg-background/50 text-textMuted rounded-full text-xs border border-borderLight hover:bg-primary hover:text-gray-900 hover:border-primary transition-colors cursor-default">Reporting et visualisation de données</span>
-                            <span className="px-3 py-1.5 bg-background/50 text-textMuted rounded-full text-xs border border-borderLight hover:bg-primary hover:text-gray-900 hover:border-primary transition-colors cursor-default">Gestion et suivi de projets</span>
+                            <span className="px-3 py-1.5 bg-background/50 text-textMuted rounded-full text-xs border border-borderLight hover:bg-primary hover:text-gray-900 hover:border-primary transition-colors cursor-default">{t.skillsTab.cm}</span>
+                            <span className="px-3 py-1.5 bg-background/50 text-textMuted rounded-full text-xs border border-borderLight hover:bg-primary hover:text-gray-900 hover:border-primary transition-colors cursor-default">{t.skillsTab.reporting}</span>
+                            <span className="px-3 py-1.5 bg-background/50 text-textMuted rounded-full text-xs border border-borderLight hover:bg-primary hover:text-gray-900 hover:border-primary transition-colors cursor-default">{t.skillsTab.mgmt}</span>
                         </div>
                     </div>
                 </div>
@@ -165,7 +167,7 @@ const About = () => {
                     className="text-center mb-16"
                 >
                     <h2 className="text-3xl md:text-4xl font-bold text-textMain font-heading">
-                        À propos de <span className="text-primary">Moi</span>
+                        {t.title} <span className="text-primary">{t.titleHighlight}</span>
                     </h2>
                 </motion.div>
 
@@ -203,28 +205,28 @@ const About = () => {
                                     <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-card border border-borderDark text-primary shrink-0 shadow-sm group-hover/icon:scale-110 transition-transform">
                                         <FontAwesomeIcon icon={faCode} className="w-5 h-5" />
                                     </div>
-                                    <span className="text-sm font-semibold text-textMain text-left flex-1">Front-End Developer</span>
+                                    <span className="text-sm font-semibold text-textMain text-left flex-1">{t.role1}</span>
                                 </div>
                                 
                                 <div className="flex items-center gap-4 bg-background/60 backdrop-blur-sm border border-borderLight rounded-xl p-3 transition-all duration-300 hover:-translate-y-1 hover:bg-primary/10 hover:border-primary/50 hover:shadow-md md:delay-75">
                                     <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-card border border-borderDark text-primary shrink-0 shadow-sm">
                                         <FontAwesomeIcon icon={faPalette} className="w-5 h-5" />
                                     </div>
-                                    <span className="text-sm font-semibold text-textMain text-left flex-1">UI/UX Web Designer</span>
+                                    <span className="text-sm font-semibold text-textMain text-left flex-1">{t.role2}</span>
                                 </div>
                                 
                                 <div className="flex items-center gap-4 bg-background/60 backdrop-blur-sm border border-borderLight rounded-xl p-3 transition-all duration-300 hover:-translate-y-1 hover:bg-primary/10 hover:border-primary/50 hover:shadow-md md:delay-100">
                                     <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-card border border-borderDark text-primary shrink-0 shadow-sm">
                                         <FontAwesomeIcon icon={faUsers} className="w-5 h-5" />
                                     </div>
-                                    <span className="text-sm font-semibold text-textMain text-left flex-1">Community Manager</span>
+                                    <span className="text-sm font-semibold text-textMain text-left flex-1">{t.role3}</span>
                                 </div>
                                 
                                 <div className="flex items-center gap-4 bg-background/60 backdrop-blur-sm border border-borderLight rounded-xl p-3 transition-all duration-300 hover:-translate-y-1 hover:bg-primary/10 hover:border-primary/50 hover:shadow-md md:delay-150">
                                     <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-card border border-borderDark text-primary shrink-0 shadow-sm">
                                         <FontAwesomeIcon icon={faServer} className="w-5 h-5" />
                                     </div>
-                                    <span className="text-xs sm:text-sm font-semibold text-textMain text-left leading-tight flex-1">IT Network & Systems<br/><span className="text-textMuted font-normal text-xs">Administrator</span></span>
+                                    <span className="text-xs sm:text-sm font-semibold text-textMain text-left leading-tight flex-1">{t.role4}</span>
                                 </div>
                             </div>
                         </div>
